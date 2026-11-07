@@ -26,20 +26,20 @@
     padding: 64px 20px 80px;
   }
   .author {
-    font-size: clamp(2.2rem, 7vw, 3.4rem);
-    font-weight: normal;
-    letter-spacing: 0.02em;
-    line-height: 1.15;
-    margin: 0 0 10px;
-  }
-  h1 {
     font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
-    font-size: 0.95rem;
+    font-size: clamp(1.1rem, 3.4vw, 1.5rem);
     font-weight: 600;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--muted);
-    margin: 0 0 48px;
+    margin: 0 0 12px;
+  }
+  h1 {
+    font-size: clamp(3rem, 11vw, 5rem);
+    font-weight: normal;
+    letter-spacing: 0.01em;
+    line-height: 1.05;
+    margin: 0 0 56px;
   }
   h2 {
     font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
@@ -69,16 +69,21 @@
   }
   .photos a:hover img { transform: scale(1.03); }
 
-  .videos { display: grid; gap: 40px; justify-items: center; }
+  .videos {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
   video {
     display: block;
     width: 100%;
-    max-width: 100%;
-    max-height: 80vh;
+    aspect-ratio: 9 / 16;
+    object-fit: contain;
     background: #000;
     border-radius: 6px;
   }
-  video.portrait { width: auto; max-width: 100%; height: min(80vh, 640px); }
 </style>
 </head>
 <body>
@@ -105,7 +110,7 @@
         <source src="videos/video-1.mp4" type="video/mp4">
         Your browser can't play this video. <a href="videos/video-1.mp4">Download it here.</a>
       </video>
-      <video class="portrait" controls playsinline preload="metadata" poster="images/poster-2.jpg">
+      <video controls playsinline preload="metadata" poster="images/poster-2.jpg">
         <source src="videos/video-2.mp4" type="video/mp4">
         Your browser can't play this video. <a href="videos/video-2.mp4">Download it here.</a>
       </video>
