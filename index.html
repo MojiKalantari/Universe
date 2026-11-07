@@ -69,26 +69,25 @@
   }
   .photos a:hover img { transform: scale(1.03); }
 
-  /* Each video's width is proportional to its shape, so both end up the same height */
+  /* Both videos are 1056 x 1080, so both boxes use that exact shape: no bars, no stretching */
   .videos {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 14px;
-    align-items: flex-start;
+    justify-items: center;
   }
   video {
     display: block;
-    min-width: 0;
+    width: 100%;
+    max-width: 1056px;
+    aspect-ratio: 1056 / 1080;
     height: auto;
     object-fit: contain;
     background: #000;
     border-radius: 6px;
   }
-  .v-main { flex: 0.978 1 0; aspect-ratio: 1056 / 1080; }
-  .v-tall { flex: 0.5625 1 0; aspect-ratio: 9 / 16; }
   @media (max-width: 600px) {
-    .videos { flex-direction: column; align-items: center; }
-    .v-main { width: 100%; flex: none; }
-    .v-tall { width: 70%; flex: none; }
+    .videos { grid-template-columns: 1fr; gap: 20px; }
   }
 </style>
 </head>
@@ -112,16 +111,24 @@
   <section>
     <h2>Videos</h2>
     <div class="videos">
-      <video class="v-main" controls playsinline preload="metadata" poster="images/poster-1.jpg">
+      <video controls playsinline preload="auto">
         <source src="videos/video-1.mp4" type="video/mp4">
         Your browser can't play this video. <a href="videos/video-1.mp4">Download it here.</a>
       </video>
-      <video class="v-tall" controls playsinline preload="metadata" poster="images/poster-2.jpg">
+      <video controls playsinline preload="auto">
         <source src="videos/video-2.mp4" type="video/mp4">
         Your browser can't play this video. <a href="videos/video-2.mp4">Download it here.</a>
       </video>
     </div>
   </section>
 </main>
+<script>
+  // Show a real frame (not black) before play
+  document.querySelectorAll('video').forEach(function (v) {
+    v.addEventListener('loadedmetadata', function () {
+      if (v.currentTime === 0) v.currentTime = 0.1;
+    });
+  });
+</script>
 </body>
 </html>
