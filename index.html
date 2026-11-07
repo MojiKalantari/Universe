@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Universe</title>
+<style>
+  :root {
+    --bg: #0b0d17;
+    --text: #e8eaf2;
+    --muted: #8b90a8;
+    --line: #20243a;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.5;
+  }
+  main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 64px 20px 80px;
+  }
+  h1 {
+    font-size: clamp(2rem, 6vw, 3rem);
+    font-weight: normal;
+    letter-spacing: 0.02em;
+    margin: 0 0 48px;
+  }
+  h2 {
+    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--line);
+  }
+  section { margin-bottom: 64px; }
+
+  .photos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 14px;
+  }
+  .photos a { display: block; overflow: hidden; border-radius: 6px; background: #000; }
+  .photos img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+  .photos a:hover img { transform: scale(1.03); }
+
+  .videos { display: grid; gap: 40px; justify-items: center; }
+  video {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    max-height: 80vh;
+    background: #000;
+    border-radius: 6px;
+  }
+  video.portrait { width: auto; max-width: 100%; height: min(80vh, 640px); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Universe</h1>
+
+  <section>
+    <h2>Photos</h2>
+    <div class="photos">
+      <a href="images/universe-1.jpg" target="_blank" rel="noopener"><img src="images/universe-1.jpg" alt="Stage set with Earth projected over a starry sky" loading="lazy"></a>
+      <a href="images/universe-2.jpg" target="_blank" rel="noopener"><img src="images/universe-2.jpg" alt="Projected astronaut floating in front of Earth" loading="lazy"></a>
+      <a href="images/universe-3.jpg" target="_blank" rel="noopener"><img src="images/universe-3.jpg" alt="Three astronauts drifting around a projected Earth" loading="lazy"></a>
+      <a href="images/universe-4.jpg" target="_blank" rel="noopener"><img src="images/universe-4.jpg" alt="Stage set with Earth, Jupiter, Mars and a glowing nebula" loading="lazy"></a>
+      <a href="images/universe-5.jpg" target="_blank" rel="noopener"><img src="images/universe-5.jpg" alt="Stage set with round panels and a lit floor" loading="lazy"></a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Videos</h2>
+    <div class="videos">
+      <video controls playsinline preload="metadata" poster="images/poster-1.jpg">
+        <source src="videos/video-1.mp4" type="video/mp4">
+        Your browser can't play this video. <a href="videos/video-1.mp4">Download it here.</a>
+      </video>
+      <video class="portrait" controls playsinline preload="metadata" poster="images/poster-2.jpg">
+        <source src="videos/video-2.mp4" type="video/mp4">
+        Your browser can't play this video. <a href="videos/video-2.mp4">Download it here.</a>
+      </video>
+    </div>
+  </section>
+</main>
+</body>
+</html>
